@@ -11,17 +11,15 @@ public class CoronaKitServiceImpl implements CoronaKitService {
 
 	@Autowired
 	CoronaKitRepository repository;
-	
+
 	@Override
 	public CoronaKit saveKit(CoronaKit kit) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.save(kit);
 	}
 
 	@Override
 	public CoronaKit getKitById(int kitId) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.getOne(kitId);
 	}
 
 }

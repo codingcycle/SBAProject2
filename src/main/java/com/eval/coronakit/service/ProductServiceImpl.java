@@ -3,6 +3,8 @@ package com.eval.coronakit.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.eval.coronakit.dao.ProductMasterRepository;
@@ -13,29 +15,31 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	ProductMasterRepository repository;
-	
+
 	@Override
 	public ProductMaster addNewProduct(ProductMaster product) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.save(product);
 	}
 
 	@Override
 	public List<ProductMaster> getAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findAll();
 	}
 
 	@Override
 	public ProductMaster deleteProduct(int productId) {
-		// TODO Auto-generated method stub
+		repository.deleteById(productId);
 		return null;
 	}
 
 	@Override
 	public ProductMaster getProductById(int productId) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findBy(productId);
+	}
+
+	@Override
+	public Page<ProductMaster> findAllProductsPageable(Pageable pageable) {
+		return repository.findAll(pageable);
 	}
 
 }
